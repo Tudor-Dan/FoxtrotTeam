@@ -1,12 +1,17 @@
 const display = require("../view/display");
 const studentsController = require("./studentsController");
 
+const statistics = () => {
+    const students = dataManager.readData("data.json");
+    display.printMessage(students.length, "Total number of students: ");
+}
+
 const choose = () => {
     const userOption = display.getInput("Please enter a number: ");
     if (userOption === "1") {
         studentsController.submenu();
     } else if (userOption === "2") {
-        display.printMessage("Not implemented yet.", true);
+        statistics();
     } else if (userOption === "0") {
         display.printMessage("Bueno, hasta la vista, companeros!");
         process.exit();
